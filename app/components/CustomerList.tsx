@@ -94,6 +94,7 @@ const CustomerList: React.FC<CustomerListProps> = ({
               <Th>プログラム</Th>
               <Th>支払い状況</Th>
               <Th>開始日</Th>
+              <Th>終了日</Th>
               <Th>備考</Th>
             </Tr>
           </Thead>
@@ -104,6 +105,7 @@ const CustomerList: React.FC<CustomerListProps> = ({
                 <Td>{customer.program_name}</Td>
                 <Td>{customer.payment_status}</Td>
                 <Td>{customer.program_start_date}</Td>
+                <Td>{customer.program_end_date}</Td>
                 <Td>
                   <Text whiteSpace="pre-wrap">
                     {wrapText(customer.notes, 20).join("\n")}
