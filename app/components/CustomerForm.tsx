@@ -151,7 +151,7 @@ const CustomerForm: React.FC<CustomerFormProps> = ({ onCustomerAdded }) => {
           />
         </FormControl>
         <FormControl>
-          <FormLabel>エージェンシー利益 (円)</FormLabel>
+          <FormLabel>コミッション (円)</FormLabel>
           <Input
             name="agency_profit"
             type="number"
