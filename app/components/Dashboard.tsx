@@ -81,14 +81,14 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
     <Box>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
         <DashboardCard
-          label="総収入"
+          label="総売上"
           value={`¥${totalRevenue.toLocaleString()}`}
-          helpText="全顧客からの総収入"
+          helpText="全顧客の支払い金額の合計"
         />
         <DashboardCard
           label="総利益"
           value={`¥${totalProfit.toLocaleString()}`}
-          helpText="エージェンシーの総利益"
+          helpText="コミッション金額の合計"
         />
       </SimpleGrid>
       {/* チャート部分をコメントアウト
