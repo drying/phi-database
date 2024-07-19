@@ -95,7 +95,7 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
         <DashboardCard
           label="総利益"
           value={`¥${totalProfit.toLocaleString()}`}
-          helpText="エージェンシーの総利益"
+          helpText="総利益"
         />
       </SimpleGrid>
       <Box mt={8} height="400px">
