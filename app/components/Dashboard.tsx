@@ -23,7 +23,7 @@ interface Customer {
   name: string;
   total_amount_received: number;
   agency_profit: number;
-  assigned_to: string; // カウンセラー（担当者）の名前
+  assigned_to: string;
 }
 
 interface DashboardCardProps {
@@ -78,12 +78,6 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
     return acc;
   }, {} as Record<string, number>);
 
-  // カウンセラーの平均利益を計算
-  const averageCounselorProfit =
-    Object.values(counselorProfits).length > 0
-      ? totalProfit / Object.values(counselorProfits).length
-      : 0;
-
   // カウンセラーごとの利益のチャートデータを作成
   const chartData = Object.entries(counselorProfits).map(([name, profit]) => ({
     name,
@@ -92,7 +86,7 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
 
   return (
     <Box>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
         <DashboardCard
           label="総収入"
           value={`¥${totalRevenue.toLocaleString()}`}
@@ -102,11 +96,6 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
           label="総利益"
           value={`¥${totalProfit.toLocaleString()}`}
           helpText="エージェンシーの総利益"
-        />
-        <DashboardCard
-          label="カウンセラー平均利益"
-          value={`¥${averageCounselorProfit.toLocaleString()}`}
-          helpText="カウンセラー1人あたりの平均利益"
         />
       </SimpleGrid>
       <Box mt={8} height="400px">
