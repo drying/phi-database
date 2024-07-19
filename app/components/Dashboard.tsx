@@ -7,16 +7,8 @@ import {
   StatNumber,
   StatHelpText,
 } from "@chakra-ui/react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+// チャート関連のインポートをコメントアウト
+// import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface Customer {
   id: number;
@@ -69,7 +61,8 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
     0
   );
 
-  // カウンセラーごとの利益を計算
+  // カウンセラーごとの利益計算とチャートデータ作成をコメントアウト
+  /*
   const counselorProfits = customers.reduce((acc, customer) => {
     if (!acc[customer.assigned_to]) {
       acc[customer.assigned_to] = 0;
@@ -78,11 +71,11 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
     return acc;
   }, {} as Record<string, number>);
 
-  // カウンセラーごとの利益のチャートデータを作成
   const chartData = Object.entries(counselorProfits).map(([name, profit]) => ({
     name,
-    profit,
+    profit
   }));
+  */
 
   return (
     <Box>
@@ -95,9 +88,10 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
         <DashboardCard
           label="総利益"
           value={`¥${totalProfit.toLocaleString()}`}
-          helpText="総利益"
+          helpText="エージェンシーの総利益"
         />
       </SimpleGrid>
+      {/* チャート部分をコメントアウト
       <Box mt={8} height="400px">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData}>
@@ -110,6 +104,7 @@ const Dashboard: React.FC<DashboardProps> = ({ customers }) => {
           </BarChart>
         </ResponsiveContainer>
       </Box>
+      */}
     </Box>
   );
 };
