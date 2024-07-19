@@ -5,9 +5,28 @@ import CustomerList from "./CustomerList";
 import CustomerForm from "./CustomerForm";
 import { supabase } from "../../lib/supabaseClient";
 
-const MainPage = () => {
+// Customer インターフェースを定義
+interface Customer {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  program_name: string;
+  school_name: string;
+  total_amount_received: number;
+  amount_paid_to_school: number;
+  agency_profit: number;
+  payment_status: string;
+  program_start_date: string;
+  program_end_date: string;
+  assigned_to: string;
+  notes: string;
+}
+
+const MainPage: React.FC = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [customers, setCustomers] = useState([]);
+  // customers の型を Customer[] として明示的に定義
+  const [customers, setCustomers] = useState<Customer[]>([]);
 
   useEffect(() => {
     fetchCustomers();
@@ -18,7 +37,8 @@ const MainPage = () => {
     if (error) {
       console.error("Error fetching customers:", error);
     } else {
-      setCustomers(data || []);
+      // データが null の場合は空配列を設定
+      setCustomers((data as Customer[]) || []);
     }
   };
 
